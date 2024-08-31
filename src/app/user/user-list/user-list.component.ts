@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../data.module';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-user-list',
@@ -9,15 +15,19 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   styleUrls: ['./user-list.component.scss'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*', minHeight: "*"})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*', minHeight: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
     ]),
   ],
 })
 export class UserListComponent {
   users: User[] = [];
-  displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'actions'];
+  displayedColumns = ['id', 'name', 'email', 'phone', 'actions'];
+  displayedColumnsWithExpand = [...this.displayedColumns, 'expand'];
   expandedUserId: number | null = null; // 用於追蹤展開的用戶 ID
 
   constructor(private userService: UserService) {
