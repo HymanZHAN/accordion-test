@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { UserService } from '../user.service';
 import { User } from '../data.module';
 import {
@@ -24,21 +27,41 @@ import {
     ]),
   ],
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
   users: User[] = [];
-  displayedColumns = ['id', 'name', 'email', 'phone', 'actions'];
+  dataSource!: MatTableDataSource<User>;
+  displayedColumns = ['id', 'name', 'email', 'phone'];
   displayedColumnsWithExpand = [...this.displayedColumns, 'expand'];
-  expandedUserId: number | null = null; // 用於追蹤展開的用戶 ID
+  expandedUserId: number | null = null;
+  user_num!: number;
 
-  constructor(private userService: UserService) {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
     this.users = this.userService.getUsers();
+    this.dataSource = new MatTableDataSource(this.users);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.user_num = this.users.length;
   }
 
-  toggleAccordion(userId: number): void {
-    this.expandedUserId = this.expandedUserId === userId ? null : userId;
+  toggleAccordion(user: User): void {
+    this.expandedUserId = this.isExpanded(user) ? null : user.id;
   }
 
-  isExpanded(userId: number): boolean {
-    return this.expandedUserId === userId;
+  isExpanded(user: User): boolean {
+    return this.expandedUserId === user.id;
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.paginator) {
+      this.paginator.firstPage();
+    }
   }
 }
