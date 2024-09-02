@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -27,7 +27,7 @@ import {
     ]),
   ],
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, AfterViewInit {
   users: User[] = [];
   dataSource!: MatTableDataSource<User>;
   displayedColumns = ['id', 'name', 'email', 'phone'];
@@ -43,9 +43,12 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
     this.users = this.userService.getUsers();
     this.dataSource = new MatTableDataSource(this.users);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     this.user_num = this.users.length;
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   toggleAccordion(user: User): void {
