@@ -10,13 +10,12 @@ export interface User {
     position: string;
     joinDate: string;
     salary: number;
-  }
-  export interface Donation {
+}
+export interface Donation {
     id: number;
     userId: number;
     amount: number;
     date: string;
     type: string;
     status: string;
-  }
-  
+}

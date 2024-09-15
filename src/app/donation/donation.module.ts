@@ -18,35 +18,31 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DonationComponent } from './donation.component';
 import { MatSelectModule } from '@angular/material/select';
 
-
 @NgModule({
-  declarations: [
-     
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatTableModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatOptionModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-  ],
-  providers: [],
-  
+    declarations: [],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatTableModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatOptionModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+    ],
+    providers: [],
 })
-export class DonationModule { }
+export class DonationModule {}

@@ -31,48 +31,47 @@ import { MatRadioModule } from '@angular/material/radio';
 import { DonationModule } from './donation/donation.module';
 import { DonationComponent } from './donation/donation.component';
 
-
-
 @NgModule({
-  declarations: [
-    AppComponent,UserListComponent,UserDetailComponent,DonationComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    
-    MatTableModule,
-    MatButtonModule,
-    MatExpansionModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatTabsModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    HttpClientModule,
-    MatInputModule,
-    MatDialogModule,  
-    MatNativeDateModule,
-    MatCardModule,
-    MatSelectModule,
-    ReactiveFormsModule,   
-    MatCheckboxModule,
-    RouterModule,
-    ReactiveFormsModule,
-    FormsModule,   
-    MatDatepickerModule,    
-    MatRadioModule, 
-    MatOptionModule,   
+    declarations: [
+        AppComponent,
+        UserListComponent,
+        UserDetailComponent,
+        DonationComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
 
-    DonationModule,  
-    
-  ],
-  providers: [
-    provideAnimationsAsync()
-  ],
-  bootstrap: [AppComponent]
+        MatTableModule,
+        MatButtonModule,
+        MatExpansionModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatTabsModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        HttpClientModule,
+        MatInputModule,
+        MatDialogModule,
+        MatNativeDateModule,
+        MatCardModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        RouterModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatDatepickerModule,
+        MatRadioModule,
+        MatOptionModule,
+
+        DonationModule,
+    ],
+    providers: [provideAnimationsAsync()],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
