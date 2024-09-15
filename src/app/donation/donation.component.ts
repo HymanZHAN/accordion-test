@@ -29,7 +29,7 @@ export interface Donation {
     templateUrl: './donation.component.html',
     styleUrls: ['./donation.component.scss'],
 })
-export class DonationComponent implements OnInit {
+export class DonationComponent implements OnInit, AfterViewInit {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
 
@@ -124,6 +124,9 @@ export class DonationComponent implements OnInit {
 
     ngOnInit(): void {
         this.dataSource = new MatTableDataSource(this.donationList);
+    }
+
+    ngAfterViewInit(): void {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
     }
