@@ -3,13 +3,12 @@
 // import { UserListComponent } from './user-list/user-list.component';
 // import { UserDetailComponent } from './user-detail/user-detail.component';
 
-// import { MatTableModule } from '@angular/material/table'; 
-// import { MatButtonModule } from '@angular/material/button'; 
-// import { MatExpansionModule } from '@angular/material/expansion'; 
-// import { MatToolbarModule } from '@angular/material/toolbar'; 
+// import { MatTableModule } from '@angular/material/table';
+// import { MatButtonModule } from '@angular/material/button';
+// import { MatExpansionModule } from '@angular/material/expansion';
+// import { MatToolbarModule } from '@angular/material/toolbar';
 // import { MatCardModule } from '@angular/material/card';
 // import { MatTabsModule } from '@angular/material/tabs';
-
 
 // @NgModule({
 //   declarations: [UserListComponent,UserDetailComponent],

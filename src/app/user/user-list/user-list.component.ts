@@ -1,7 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../data.module';
 import {
@@ -22,49 +19,25 @@ import {
       state('expanded', style({ height: '*', minHeight: '*' })),
       transition(
         'expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'),
       ),
     ]),
   ],
 })
-export class UserListComponent implements OnInit, AfterViewInit {
+export class UserListComponent {
   users: User[] = [];
-  dataSource!: MatTableDataSource<User>;
-  displayedColumns = ['id', 'name', 'email', 'phone'];
-  displayedColumnsWithExpand = [...this.displayedColumns, 'expand'];
-  expandedUserId: number | null = null;
-  user_num!: number;
+  displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'actions'];
+  expandedUserId: number | null = null; // 用於追蹤展開的用戶 ID
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
+  constructor(private userService: UserService) {
     this.users = this.userService.getUsers();
-    this.dataSource = new MatTableDataSource(this.users);
-    this.user_num = this.users.length;
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+  toggleAccordion(userId: number): void {
+    this.expandedUserId = this.expandedUserId === userId ? null : userId;
   }
 
-  toggleAccordion(user: User): void {
-    this.expandedUserId = this.isExpanded(user) ? null : user.id;
-  }
-
-  isExpanded(user: User): boolean {
-    return this.expandedUserId === user.id;
-  }
-
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.paginator) {
-      this.paginator.firstPage();
-    }
+  isExpanded(userId: number): boolean {
+    return this.expandedUserId === userId;
   }
 }

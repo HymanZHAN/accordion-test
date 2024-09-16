@@ -11,7 +11,6 @@ export interface User {
   joinDate: string;
   salary: number;
 }
-
 export interface Donation {
   id: number;
   userId: number;
