@@ -12,7 +12,19 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto auto auto auto auto auto auto;
-  grid-gap: 5px;
+  column-gap: 1rem;
+}
+
+.col-start-1 {
+  grid-column-start: 1;
+}
+
+.col-start-2 {
+  grid-column-start: 2;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
 }
 
 .donor-form {
@@ -68,7 +80,7 @@
 }
 
 .remarks-section {
-  grid-column: 2; /* Place in the third column */
+  grid-column: 2; /* Place in the second column */
   grid-row: 4 / 7; /* Span across rows 1 to 7 */
   display: flex;
   align-items: center;
